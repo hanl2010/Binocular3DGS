@@ -4,7 +4,7 @@
 <p align="center">
     <strong>Liang Han</strong>
     ·
-    <a href="https://junshengzhou.github.io/"><strong>Junshen Zhou</strong>
+    <a href="https://junshengzhou.github.io/"><strong>Junshen Zhou</strong></a>
     ·
     <a href="https://yushen-liu.github.io/"><strong>Yu-Shen Liu</strong></a>
     ·
