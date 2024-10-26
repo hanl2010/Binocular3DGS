@@ -4,7 +4,6 @@ from concurrent.futures import ThreadPoolExecutor
 import time
 
 scenes = [8, 21, 30, 31, 34, 38, 40, 41, 45, 55, 63, 82, 103, 110, 114]
-# scenes = [8]
 dataset_name = "DTU"
 data_base_path='DATA_DIR'
 out_base_path=f'output/{dataset_name}'
