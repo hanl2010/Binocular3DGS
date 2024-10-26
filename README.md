@@ -11,7 +11,7 @@
     <a href="https://h312h.github.io/"><strong>Zhizhong Han</strong></a>
 </p>
 <h2 align="center">NeurIPS 2024</h2>
-<h3 align="center"><a href="#">Paper</a> | <a href="https://hanl2010.github.io/Binocular3DGS/">Project Page</a></h3>
+<h3 align="center"><a href="https://arxiv.org/abs/2410.18822">Paper</a> | <a href="https://hanl2010.github.io/Binocular3DGS/">Project Page</a></h3>
 <div align="center"></div>
 <p align="center">
     <img src="assets/pipeline.png" width="780" />
