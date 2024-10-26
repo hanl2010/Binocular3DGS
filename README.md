@@ -25,12 +25,42 @@ We leverage dense initialization for achieving Gaussian locations, and optimize 
 </ul>
 
 ## Installation
+1. Clone Binocular3DGS
+```
+git clone --recursive https://github.com/hanl2010/Binocular3DGS.git
+```
+2. Setup Anaconda Environment
+```
+conda create -n binocular3dgs python=3.10
+conda activate binocular3dgs
+pip install -r requirements.txt
+pip install submodules/diff-gaussian-rasterization
+pip install submodules/simple-knn
+```
 
 ## Dataset
+- Download the processed datasets: [LLFF](https://drive.google.com/file/d/1XlnLk5SSzZ9bNdne5Wx5niA2ypo_aXAO/view?usp=drive_link) and [DTU](https://drive.google.com/file/d/13tEn6BxA3bKbTVc6xpWAbPHLALBSHOMK/view?usp=sharing)
+- Download the NeRF Synthetic dataset from [here]()
 
-## Training
+## Checkpoints
+We use the pre-trained [PDCNet+](https://github.com/PruneTruong/DenseMatching) to generate dense initialization point clouds. The pre-trained PDCNet+ model can be downloaded [here](https://drive.google.com/file/d/151X9ovbOG35tbPjioV5CYk_5GKQ8FErw/view?usp=sharing).
 
-## Evaluation
+Put the pre-trained model in `submodules/dense_matcher/pre_trained_models`
+
+## Training and Evaluation
+#### LLFF dataset
+```
+python script/run_llff.py
+```
+#### DTU dataset
+```
+python script/run_dtu.py
+```
+#### NeRF Synthetic dataset (Blender)
+```
+python script/run_blender.py
+```
+
 
 ## Citation
 If you find our code or paper useful, please consider citing
