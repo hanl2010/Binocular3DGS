@@ -61,7 +61,6 @@ python script/run_dtu.py
 python script/run_blender.py
 ```
 
-
 ## Citation
 If you find our code or paper useful, please consider citing
 ```bibtex
