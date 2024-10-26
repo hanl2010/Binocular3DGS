@@ -4,14 +4,12 @@ from concurrent.futures import ThreadPoolExecutor
 import time
 
 scenes = ["fern", "flower", "fortress", "horns", "leaves", "orchids", "room", "trex"]
-# scenes = ["leaves"]
 dataset_name = "LLFF"
-data_base_path='/home/hanliang/data/public_dataset/nerf_llff_data_colmap'
+data_base_path='DATA_DIR'
 out_base_path=f'output/{dataset_name}'
 n_views = 3
 resolution = 2
 
-total_iterations = 10
 
 excluded_gpus = set()
 mem_threshold = 0.2
@@ -20,21 +18,20 @@ base_dir = os.path.abspath(os.getcwd())
 
 jobs = scenes
 
-def train_block(gpu_id, scene, suffix):
+def train_block(gpu_id, scene):
        cmd = (f'CUDA_VISIBLE_DEVICES={gpu_id} python triangulate.py --data_path {data_base_path}/{scene} '
-              f'--output_path {base_dir}/keypoints_to_3d/{dataset_name}_{suffix} '
+              f'--output_path {base_dir}/keypoints_to_3d/{dataset_name} '
               f'--resolution {resolution} --dataset_name {dataset_name} ')
        print(cmd)
        os.chdir(os.path.join(base_dir, "submodules", "dense_matcher"))
        os.system(cmd)
        os.chdir(base_dir)
 
-       model_path = f"{out_base_path}/{scene}_{n_views}views_{suffix}"
+       model_path = f"{out_base_path}/{scene}_{n_views}views"
 
        cmd = (
               f'CUDA_VISIBLE_DEVICES={gpu_id} python train.py -s {data_base_path}/{scene} -m {model_path} '
               f'--n_views {n_views} --dataset_name {dataset_name} --resolution {resolution} --eval '
-              f'--suffix {suffix}'
               )
        print(cmd)
        os.system(cmd)
@@ -57,10 +54,8 @@ def train_block(gpu_id, scene, suffix):
 
 def worker(gpu_id, block_id):
     print(f"Starting job on GPU {gpu_id} with block {block_id}\n")
-    # for iteration in range(total_iterations):
-    train_block(gpu_id, block_id, suffix="sample")
+    train_block(gpu_id, block_id)
     print(f"Finished job on GPU {gpu_id} with block {block_id}\n")
-    # This worker function starts a job and returns when it's done.
 
 
 def dispatch_jobs(jobs, executor):

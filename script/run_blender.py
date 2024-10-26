@@ -5,7 +5,7 @@ import time
 
 scenes = ["chair", "drums", "ficus", "hotdog", "lego", "materials", "mic", "ship"]
 dataset_name = "Blender"
-data_base_path='DATA_ROOT'
+data_base_path='DATA_DIR'
 out_base_path=f'output/{dataset_name}'
 n_views = 8
 resolution = 2
