@@ -42,10 +42,10 @@ def train_block(gpu_id, scene):
 
        return True
 
-def worker(gpu_id, block_id):
-    print(f"Starting job on GPU {gpu_id} with block {block_id}\n")
-    train_block(gpu_id, block_id)
-    print(f"Finished job on GPU {gpu_id} with block {block_id}\n")
+def worker(gpu_id, scene):
+    print(f"Starting job on GPU {gpu_id} with scene {scene}\n")
+    train_block(gpu_id, scene)
+    print(f"Finished job on GPU {gpu_id} with scene {scene}\n")
     # This worker function starts a job and returns when it's done.
 
 
