@@ -122,7 +122,7 @@ def training(dataset, opt, pipe, args):
 
         disparity_loss=0.0
         if args.binocular_consistency and iteration > args.shift_cam_start:
-            trans_dist = torch.rand(1) * 0.4
+            trans_dist = torch.rand(1) * args.cam_trans_dist
             trans_dist = (trans_dist * random.choice([-1.0, 1.0])).item()
             shifted_cam = scene.getShiftedCamera(viewpoint_cam, trans_dist)
             render_pkg = render(shifted_cam, gaussians, pipe, bg)
@@ -277,6 +277,7 @@ if __name__ == "__main__":
     parser.add_argument("--start_checkpoint", type=str, default = None)
     parser.add_argument("--opacity_decay", action="store_true", default=True)
     parser.add_argument("--opacity_decay_factor", type=float, default=0.995)
+    parser.add_argument("--cam_trans_dist", type=float, default=0.4)
     parser.add_argument("--binocular_consistency", action="store_true", default=True)
     parser.add_argument("--shift_cam_start", type=int, default=20000)
     parser.add_argument("--dataset_name", type=str, default="LLFF")
