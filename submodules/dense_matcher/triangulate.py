@@ -119,7 +119,7 @@ for idx in ref_indices:
 
 print("reading images ...")
 images = np.stack([imageio.v3.imread(image_name)[..., :3] for image_name in tqdm(images_list)])
-images = torch.tensor(images).float().cuda()
+# images = torch.tensor(images).float().cuda()
 if args.resolution > 1:
     height = height // args.resolution
     width = width // args.resolution
@@ -140,7 +140,9 @@ for ref_index in ref_indices:
     coord_list = []
     for src_index in srcs_indices[ref_index]:
         ref_image = images[ref_index]
+        ref_image = ref_image.cuda()
         src_image = images[src_index]
+        src_image =src_image.cuda()
 
         with torch.inference_mode():
             pred = matcher.get_matches_and_confidence(ref_image.permute(2,0,1).unsqueeze(0),
