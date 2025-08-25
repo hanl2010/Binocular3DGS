@@ -142,7 +142,7 @@ for ref_index in ref_indices:
         ref_image = images[ref_index]
         ref_image = ref_image.cuda()
         src_image = images[src_index]
-        src_image =src_image.cuda()
+        src_image = src_image.cuda()
 
         with torch.inference_mode():
             pred = matcher.get_matches_and_confidence(ref_image.permute(2,0,1).unsqueeze(0),
