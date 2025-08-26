@@ -100,9 +100,9 @@ def evaluate(model_paths, dataset_name, idrmasks_path):
                         torchvision.utils.save_image(render, os.path.join(method_dir / "masked",
                                                                           '{0:05d}'.format(idx) + ".png"))
 
-                    ssims.append(ssim(renders[idx], gts[idx]))
+                    ssims.append(ssim(render, gt))
                     psnrs.append(psnr(render, gt, mask=masks[idx].unsqueeze(0)))
-                    lpipss.append(lpips(renders[idx], gts[idx], net_type='vgg'))
+                    lpipss.append(lpips(render, gt, net_type='vgg'))
 
                 print("  SSIM : {:>12.7f}".format(torch.tensor(ssims).mean(), ".5"))
                 print("  PSNR : {:>12.7f}".format(torch.tensor(psnrs).mean(), ".5"))
