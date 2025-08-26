@@ -20,7 +20,7 @@
 We leverage dense initialization for achieving Gaussian locations, and optimize the locations and Gaussian attributes with three constraints or strategies:
 <ul>
 <li> Binocular Stereo Consistency Loss. We construct a binocular view pair by translating an input view with camera positions, where we constrain on the view consistency of binocular view pairs in a self-supervised manner.</li>
-<li> Opacity Penalty Strategy is designed to decay the Gaussian opacity during training for regularizing them. </li>
+<li> Opacity Decay Strategy is designed to decay the Gaussian opacity during training for regularizing them. </li>
 <li> The commonly-used Color Reconstruction Loss. </li>
 </ul>
 
