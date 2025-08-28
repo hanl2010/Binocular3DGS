@@ -2,7 +2,7 @@ GPUtil==1.4.0
 imageio==2.34.1
 matplotlib==3.9.2
 moviepy==1.0.3
-numpy==2.1.2
+numpy==1.26.4
 opencv_python==4.8.0.76
 plyfile==1.1
 scikit_image==0.19.3
